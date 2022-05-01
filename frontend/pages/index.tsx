@@ -2,9 +2,9 @@ import type { NextPage } from 'next'
 import styled from "styled-components"
 import Link from 'next/link'
 
-const Home: NextPage = () => {
+const Main: NextPage = () => {
   return (
-    <HomeContainer>
+    <MainContainer>
       <Wrap>
         <Logo>
           <h1>LimitLess Pocket</h1>
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           </Link>
         </ButtonGroup>
       </Wrap>
-    </HomeContainer>
+    </MainContainer>
   )
 }
 const Logo=styled.div`
@@ -36,7 +36,7 @@ padding:0;margin:0;
   color:blue;
 }
 `;
-const HomeContainer = styled.div`
+const MainContainer = styled.div`
 position:relative;
 width:100%; height:100%;
 display:flex;
@@ -66,5 +66,5 @@ color:${props => props.color ? "white" : "black"};
 `;
 
 
-export default Home
+export default Main;
 

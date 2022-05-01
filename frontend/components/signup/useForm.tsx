@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
+
 import { signup } from "../../adapters/authAPI";
 
 const useForm = (validateForm:Function)=>{
+    const router = useRouter();
 
     const [isSubmitting,setIsSubmitting]=useState(false);
+    const [redirect,setRedirect] = useState(false);
     const [formValues, setFormValues]=useState({
         firstName:'',
         lastName:'',
@@ -64,6 +68,7 @@ const useForm = (validateForm:Function)=>{
                             email:'',
                             password:'',
                         });
+                        setRedirect(true);
                     }
                 });   
 
@@ -74,8 +79,17 @@ const useForm = (validateForm:Function)=>{
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[errors]);
+    useEffect(()=>{
+        if(redirect){
+            console.log('wil redirect');
+            router.push({
+                pathname: '/'
+            });
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[redirect]);
 
-    return { formValues, errors, onHandleChange, onHandleSubmit };
+    return { formValues, errors, redirect, onHandleChange, onHandleSubmit };
 
 };
 

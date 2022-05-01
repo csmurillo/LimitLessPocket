@@ -5,7 +5,7 @@ import validateForm from './validateForm';
 
 const SignupComponent: FC = () => {
 
-    const { formValues, errors, onHandleChange, onHandleSubmit }=useForm(validateForm);
+    const { formValues, errors, redirect, onHandleChange, onHandleSubmit }=useForm(validateForm);
     
     return (
     <>
