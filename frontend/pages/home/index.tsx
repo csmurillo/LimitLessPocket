@@ -1,9 +1,12 @@
 import type { NextPage } from 'next'
 import styled from 'styled-components';
+import RouteGuard from '../../components/RouteGuard';
 
 const Home: NextPage = ()=>{
     return (
-        <HomeContainer>Home</HomeContainer>
+        // <RouteGuard>
+            <HomeContainer>Home</HomeContainer>
+        // </RouteGuard>
     );
 };
 

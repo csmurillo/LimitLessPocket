@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
-import { login } from "../../adapters/authAPI";
+import { login, saveAuth } from "../../adapters/authAPI";
 
 const useForm = (validateForm:Function)=>{
     const router = useRouter();
@@ -50,11 +50,13 @@ const useForm = (validateForm:Function)=>{
                         setIsSubmitting(false);
                     }
                     else{
-                        setFormValues({
-                            email:'',
-                            password:'',
-                        });
-                        setRedirect(true);
+                        saveAuth(res,()=>{
+                            setFormValues({
+                                email:'',
+                                password:'',
+                            });
+                            setRedirect(true);
+                        })
                     }
                 });
             }
